@@ -2,12 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Victory International Trading - Clean White Theme</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { 
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Optimized animations for mobile */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in-up,
+            .fade-in-left,
+            .fade-in-right,
+            .pulse-soft {
+                animation: none;
+                opacity: 1;
+            }
+        }
         
         /* Clean animations */
         .fade-in-up {
@@ -58,19 +82,22 @@
             }
         }
         
-        /* Clean hover effects */
-        .hover-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Touch-friendly hover effects */
+        @media (hover: hover) {
+            .hover-lift:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            }
         }
         
-        .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         /* Clean glass effect */
         .glass-effect {
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
@@ -84,6 +111,22 @@
             0%, 100% { opacity: 0.5; }
             50% { opacity: 0.8; }
         }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .mobile-text-lg {
+                font-size: 1.125rem;
+                line-height: 1.75rem;
+            }
+            
+            .mobile-p-4 {
+                padding: 1rem;
+            }
+            
+            .mobile-mt-4 {
+                margin-top: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -95,7 +138,7 @@
                 <div class="flex items-center">
                     <img src="victory_logo.png" 
                          alt="Victory International Trading LLC" 
-                         class="h-14 w-auto"/>
+                         class="h-12 md:h-14 w-auto"/>
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -108,7 +151,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button class="text-gray-700 hover:text-blue-600 transition-colors duration-200">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -116,10 +159,34 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-50 md:hidden">
+            <div class="flex flex-col h-full">
+                <div class="flex justify-between items-center p-4 border-b">
+                    <img src="victory_logo.png" 
+                         alt="Victory International Trading LLC" 
+                         class="h-10 w-auto"/>
+                    <button id="close-menu" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto">
+                    <div class="px-4 py-6 space-y-6">
+                        <a href="#" class="block text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200">Home</a>
+                        <a href="#" class="block text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200">About</a>
+                        <a href="#" class="block text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200">Product Catalogue</a>
+                        <a href="#" class="block text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section with Shipping Background -->
-    <section class="pt-20 h-screen flex items-center justify-center relative overflow-hidden">
+    <section class="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden">
         <!-- Background Image with Darker Overlay -->
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('shipping-port-sunset.png');">
         </div>
@@ -132,61 +199,53 @@
         <!-- Content -->
         <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
             <!-- Badge -->
-            <div class="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-8 border border-blue-200 fade-in-up">
+            <div class="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-6 md:mb-8 border border-blue-200 fade-in-up">
                 <span class="w-2 h-2 bg-blue-500 rounded-full mr-3 pulse-soft"></span>
                 Excellence Since 1988
             </div>
             
             <!-- Main Headline -->
-            <div class="space-y-6 mb-12">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
+            <div class="space-y-4 md:space-y-6 mb-8 md:mb-12">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
                     <span class="block fade-in-left">Global Trade Solutions</span>
                     <span class="block bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent fade-in-right" style="animation-delay: 0.3s;">
                         Delivered Worldwide
                     </span>
                 </h1>
                 
-                <p class="text-lg md:text-xl text-white leading-relaxed max-w-3xl mx-auto font-light fade-in-up" style="animation-delay: 0.6s;">
+                <p class="text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-3xl mx-auto font-light fade-in-up px-4" style="animation-delay: 0.6s;">
                     Connecting global markets with trusted distribution, export and import services across FMCG and commodity sectors for over three decades
                 </p>
             </div>
             
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up" style="animation-delay: 0.9s;">
-                <button class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-full font-semibold text-base hover-lift shadow-lg">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 md:mb-16 fade-in-up px-4" style="animation-delay: 0.9s;">
+                <button class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold text-base hover-lift shadow-lg">
                     Start Trading Today
                 </button>
-                <button class="border-2 border-white text-white hover:border-yellow-400 hover:text-yellow-400 px-8 py-3 rounded-full font-semibold text-base hover-lift transition-all duration-300">
+                <button class="w-full sm:w-auto border-2 border-white text-white hover:border-yellow-400 hover:text-yellow-400 px-6 md:px-8 py-3 rounded-full font-semibold text-base hover-lift transition-all duration-300">
                     Explore Services
                 </button>
             </div>
             
             <!-- Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto fade-in-up" style="animation-delay: 1.2s;">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto fade-in-up px-4" style="animation-delay: 1.2s;">
                 <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-2">35+</div>
-                    <div class="text-sm text-gray-200 font-medium">Years Experience</div>
+                    <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">35+</div>
+                    <div class="text-xs sm:text-sm text-gray-200 font-medium">Years Experience</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-2">1000+</div>
-                    <div class="text-sm text-gray-200 font-medium">Products</div>
+                    <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">1000+</div>
+                    <div class="text-xs sm:text-sm text-gray-200 font-medium">Products</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-2">5+</div>
-                    <div class="text-sm text-gray-200 font-medium">Countries</div>
+                    <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">5+</div>
+                    <div class="text-xs sm:text-sm text-gray-200 font-medium">Countries</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
-                    <div class="text-sm text-gray-200 font-medium">Support</div>
+                    <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">24/7</div>
+                    <div class="text-xs sm:text-sm text-gray-200 font-medium">Support</div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Clean Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-bounce">
-            <p class="text-white text-sm mb-2 font-medium">Scroll to explore</p>
-            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center mx-auto">
-                <div class="w-1 h-3 bg-white rounded-full mt-2 pulse-soft"></div>
             </div>
         </div>
     </section>
@@ -785,12 +844,43 @@
 
     <!-- Smooth Scrolling Script -->
     <script>
+        // Mobile Menu Functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        closeMenuButton.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                toggleMenu();
+            }
+        });
+        
+        // Close menu when pressing escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        toggleMenu();
+                    }
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
