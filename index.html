@@ -6,6 +6,7 @@
     <title>Victory International Trading - Clean White Theme</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         body { 
             font-family: 'Inter', sans-serif;
@@ -569,15 +570,9 @@
 
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <button class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
-                            <span>Find a place</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </button>
-                        <button class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                        <a href="#contact" class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 text-center">
                             Learn More
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -664,29 +659,59 @@
                 <!-- Right Column - Contact Form -->
                 <div class="max-w-xl">
 
-                    <form class="space-y-8">
+                    <!-- Success/Error Messages -->
+                    <div id="form-messages" class="hidden mb-6">
+                        <div id="success-message" class="hidden bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Thank you! Your message has been sent successfully. We'll get back to you soon.
+                            </div>
+                        </div>
+                        <div id="error-message" class="hidden bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                </svg>
+                                <span id="error-text">Sorry, there was an error sending your message. Please try again.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="contact-form" class="space-y-8">
                         <!-- Single Column Fields with Modern Styling -->
                         <div class="space-y-6">
                             <!-- Name Field -->
                             <div class="group">
                                 <label class="block text-sm font-medium text-gray-900 mb-3">Your name</label>
                                 <input type="text" 
+                                       name="from_name"
+                                       id="name"
+                                       required
                                        class="w-full px-0 py-4 text-lg bg-transparent border-0 border-b-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:ring-0 transition-colors duration-300"
                                        placeholder="Enter your full name">
+                                <div class="error-message hidden text-red-600 text-sm mt-1"></div>
                             </div>
 
                             <!-- Email Field -->
                             <div class="group">
                                 <label class="block text-sm font-medium text-gray-900 mb-3">Email address</label>
                                 <input type="email" 
+                                       name="from_email"
+                                       id="email"
+                                       required
                                        class="w-full px-0 py-4 text-lg bg-transparent border-0 border-b-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:ring-0 transition-colors duration-300"
                                        placeholder="your@email.com">
+                                <div class="error-message hidden text-red-600 text-sm mt-1"></div>
                             </div>
 
                             <!-- Company Field -->
                             <div class="group">
                                 <label class="block text-sm font-medium text-gray-900 mb-3">Company</label>
                                 <input type="text" 
+                                       name="company"
+                                       id="company"
                                        class="w-full px-0 py-4 text-lg bg-transparent border-0 border-b-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:ring-0 transition-colors duration-300"
                                        placeholder="Your company name">
                             </div>
@@ -695,17 +720,29 @@
                             <div class="group">
                                 <label class="block text-sm font-medium text-gray-900 mb-3">Message</label>
                                 <textarea rows="4" 
+                                          name="message"
+                                          id="message"
+                                          required
                                           class="w-full px-0 py-4 text-lg bg-transparent border-0 border-b-2 border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:ring-0 resize-none transition-colors duration-300"
                                           placeholder="Tell us about your project..."></textarea>
+                                <div class="error-message hidden text-red-600 text-sm mt-1"></div>
                             </div>
                         </div>
 
                         <!-- Submit Button - Modern Minimal -->
                         <div class="pt-8">
                             <button type="submit" 
-                                    class="group w-full bg-gray-900 hover:bg-blue-600 text-white py-5 text-lg font-medium transition-all duration-300 relative overflow-hidden">
-                                <span class="relative z-10">Send message</span>
+                                    id="submit-button"
+                                    class="group w-full bg-gray-900 hover:bg-blue-600 text-white py-5 text-lg font-medium transition-all duration-300 relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span class="relative z-10" id="button-text">Send message</span>
                                 <div class="absolute inset-0 bg-blue-600 transform translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                                <!-- Loading spinner -->
+                                <div id="loading-spinner" class="hidden absolute inset-0 flex items-center justify-center bg-blue-600">
+                                    <svg class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </div>
                             </button>
                         </div>
                     </form>
@@ -893,6 +930,160 @@
                 nav.style.backdropFilter = 'blur(20px)';
             }
         });
+
+        // Contact Form Functionality
+        (function() {
+            // Initialize EmailJS
+            emailjs.init("9dYs6PR2ON77rey-h"); // Replace with your EmailJS public key
+            
+            const contactForm = document.getElementById('contact-form');
+            const submitButton = document.getElementById('submit-button');
+            const buttonText = document.getElementById('button-text');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const formMessages = document.getElementById('form-messages');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+
+            // Form validation
+            function validateForm(formData) {
+                const errors = {};
+                
+                if (!formData.get('from_name').trim()) {
+                    errors.name = 'Name is required';
+                }
+                
+                const email = formData.get('from_email').trim();
+                if (!email) {
+                    errors.email = 'Email is required';
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    errors.email = 'Please enter a valid email address';
+                }
+                
+                if (!formData.get('message').trim()) {
+                    errors.message = 'Message is required';
+                }
+                
+                return errors;
+            }
+
+            // Display field errors
+            function displayFieldErrors(errors) {
+                // Clear all previous errors
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.classList.add('hidden');
+                    el.textContent = '';
+                });
+
+                // Display new errors
+                Object.keys(errors).forEach(field => {
+                    const input = document.getElementById(field);
+                    const errorEl = input.parentNode.querySelector('.error-message');
+                    if (errorEl) {
+                        errorEl.textContent = errors[field];
+                        errorEl.classList.remove('hidden');
+                        input.classList.add('border-red-500');
+                    }
+                });
+            }
+
+            // Clear field errors
+            function clearFieldErrors() {
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.classList.add('hidden');
+                    el.textContent = '';
+                });
+                document.querySelectorAll('input, textarea').forEach(el => {
+                    el.classList.remove('border-red-500');
+                });
+            }
+
+            // Show message
+            function showMessage(type, message = null) {
+                formMessages.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+                
+                if (type === 'success') {
+                    successMessage.classList.remove('hidden');
+                } else if (type === 'error') {
+                    if (message) {
+                        errorText.textContent = message;
+                    }
+                    errorMessage.classList.remove('hidden');
+                }
+            }
+
+            // Hide messages
+            function hideMessages() {
+                formMessages.classList.add('hidden');
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+            }
+
+            // Set loading state
+            function setLoadingState(loading) {
+                submitButton.disabled = loading;
+                if (loading) {
+                    buttonText.classList.add('opacity-0');
+                    loadingSpinner.classList.remove('hidden');
+                } else {
+                    buttonText.classList.remove('opacity-0');
+                    loadingSpinner.classList.add('hidden');
+                }
+            }
+
+            // Handle form submission
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                hideMessages();
+                clearFieldErrors();
+                
+                const formData = new FormData(this);
+                const errors = validateForm(formData);
+                
+                if (Object.keys(errors).length > 0) {
+                    displayFieldErrors(errors);
+                    return;
+                }
+                
+                setLoadingState(true);
+                
+                try {
+                    // Note: You need to replace YOUR_PUBLIC_KEY with your actual EmailJS public key
+                    const result = await emailjs.sendForm(
+                        'service_npszf1f',    // Your EmailJS service ID
+                        'template_lfkrshg',   // Your EmailJS template ID
+                        this,
+                        '9dYs6PR2ON77rey-h'     // Replace with your EmailJS public key
+                    );
+                    
+                    console.log('Email sent successfully:', result);
+                    showMessage('success');
+                    contactForm.reset();
+                    
+                } catch (error) {
+                    console.error('Email sending failed:', error);
+                    showMessage('error', 'Sorry, there was an error sending your message. Please try again or contact us directly.');
+                }
+                
+                setLoadingState(false);
+            });
+
+            // Clear errors when user starts typing
+            document.querySelectorAll('input, textarea').forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('border-red-500')) {
+                        this.classList.remove('border-red-500');
+                        const errorEl = this.parentNode.querySelector('.error-message');
+                        if (errorEl) {
+                            errorEl.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
