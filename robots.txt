@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap (update with your actual domain)
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Block access to task files
+Disallow: /tasks/
+Disallow: /EMAIL_SETUP.md
+Disallow: /CHANGELOG.md
+Disallow: /CLAUDE.md
+
+# Allow search engines to crawl important pages
+Allow: /index.html
+Allow: /about.html
+Allow: /catalogue.html
+
+# Crawl delay (optional - adjust based on server capacity)
+Crawl-delay: 1

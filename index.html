@@ -3,7 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Victory International Trading - Clean White Theme</title>
+    <title>Victory International Trading - Leading FMCG Distributor in Dubai, UAE</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Victory International Trading LLC - Leading FMCG distributor in Dubai with 45+ years experience. Global trading solutions across UAE, India, Myanmar & Indonesia. 1000+ premium brands.">
+    <meta name="keywords" content="FMCG distributor Dubai, international trading UAE, commodity trading, global logistics, export import Dubai, Victory International Trading">
+    <meta name="author" content="Victory International Trading LLC">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Victory International Trading - Leading FMCG Distributor in Dubai">
+    <meta property="og:description" content="45+ years of excellence in FMCG distribution and commodity trading across Middle East and Asia. Contact us for global trading solutions.">
+    <meta property="og:image" content="https://your-domain.com/victory_logo.png">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Victory International Trading - FMCG Distributor Dubai">
+    <meta name="twitter:description" content="Leading international trading company with 45+ years experience in FMCG distribution and commodity trading.">
+    <meta name="twitter:image" content="https://your-domain.com/victory_logo.png">
+    
+    <!-- Favicon and PWA -->
+    <link rel="icon" type="image/png" sizes="32x32" href="victory_logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="victory_logo.png">
+    <link rel="apple-touch-icon" href="victory_logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" href="shipping-port-sunset.png" as="image">
+    <link rel="preload" href="victory_logo.png" as="image">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -34,52 +65,55 @@
             }
         }
         
-        /* Clean animations */
+        /* Clean animations with performance optimizations */
         .fade-in-up {
             animation: fadeInUp 1s ease-out forwards;
             opacity: 0;
+            will-change: transform, opacity;
         }
         
         .fade-in-left {
             animation: fadeInLeft 1.2s ease-out forwards;
             opacity: 0;
+            will-change: transform, opacity;
         }
         
         .fade-in-right {
             animation: fadeInRight 1.2s ease-out forwards;
             opacity: 0;
+            will-change: transform, opacity;
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translate3d(0, 30px, 0);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
         
         @keyframes fadeInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-30px);
+                transform: translate3d(-30px, 0, 0);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
         }
         
         @keyframes fadeInRight {
             from {
                 opacity: 0;
-                transform: translateX(30px);
+                transform: translate3d(30px, 0, 0);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: translate3d(0, 0, 0);
             }
         }
         
@@ -139,7 +173,8 @@
                 <div class="flex items-center">
                     <img src="victory_logo.png" 
                          alt="Victory International Trading LLC" 
-                         class="h-12 md:h-14 w-auto"/>
+                         class="h-12 md:h-14 w-auto"
+                         loading="eager"/>
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -167,7 +202,8 @@
                 <div class="flex justify-between items-center p-4 border-b">
                     <img src="victory_logo.png" 
                          alt="Victory International Trading LLC" 
-                         class="h-10 w-auto"/>
+                         class="h-10 w-auto"
+                         loading="eager"/>
                     <button id="close-menu" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -302,7 +338,8 @@
                     <div class="relative overflow-hidden rounded-3xl shadow-2xl">
                         <img src="global-network-map.png" 
                              alt="Victory International Trading Global Network" 
-                             class="w-full h-96 object-cover"/>
+                             class="w-full h-96 object-cover"
+                             loading="lazy"/>
                         
                         <!-- Subtle overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
@@ -363,7 +400,8 @@
             <div class="relative">
                 <img src="brand-partners-grid.png" 
                      alt="Victory International Trading Brand Partners" 
-                     class="w-full rounded-2xl shadow-lg"/>
+                     class="w-full rounded-2xl shadow-lg"
+                     loading="lazy"/>
                 
                 <!-- Overlay with stats -->
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-2xl"></div>
@@ -425,7 +463,8 @@
                     <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-8 shadow-xl">
                         <img src="logistics-network.png" 
                              alt="Global Logistics Network - Victory International Trading" 
-                             class="w-full h-96 object-contain rounded-2xl"/>
+                             class="w-full h-96 object-contain rounded-2xl"
+                             loading="lazy"/>
                     </div>
                 </div>
 
@@ -581,8 +620,9 @@
                     <div class="relative">
                         <div class="bg-white rounded-3xl p-6 shadow-2xl">
                             <img src="img/001.png" 
-     alt="Victory International Trading - Global Operations" 
-     class="w-full max-w-md h-auto rounded-2xl"/>
+                                 alt="Victory International Trading - Global Operations" 
+                                 class="w-full max-w-md h-auto rounded-2xl"
+                                 loading="lazy"/>
   
                         </div>
                         
@@ -627,7 +667,8 @@
                     <div class="relative overflow-hidden rounded-3xl shadow-2xl">
                         <img src="container-ship.png" 
                              alt="Victory International Trading - Global Shipping Solutions" 
-                             class="w-full h-96 lg:h-[700px] object-cover"/>
+                             class="w-full h-96 lg:h-[700px] object-cover"
+                             loading="lazy"/>
                         
                         <!-- Subtle overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -762,7 +803,8 @@
                           <div class="flex items-center">
                     <img src="victory_logo-tr.png" 
                          alt="Victory International Trading LLC" 
-                         class="h-8 w-auto"/>
+                         class="h-8 w-auto"
+                         loading="lazy"/>
                 </div>
                         
                     </div>
@@ -933,8 +975,10 @@
 
         // Contact Form Functionality
         (function() {
-            // Initialize EmailJS
-            emailjs.init("9dYs6PR2ON77rey-h"); // Replace with your EmailJS public key
+            // Initialize EmailJS after page load for better performance
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init("9dYs6PR2ON77rey-h");
+            }
             
             const contactForm = document.getElementById('contact-form');
             const submitButton = document.getElementById('submit-button');
@@ -1084,6 +1128,53 @@
                 });
             });
         })();
+
+        // Performance optimizations: Intersection Observer for animations
+        if ('IntersectionObserver' in window) {
+            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        }
+
+        // Preload critical images on interaction
+        function preloadImage(src) {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = src;
+            document.head.appendChild(link);
+        }
+
+        // Preload next page images on hover
+        document.querySelectorAll('a[href="catalogue.html"], a[href="about.html"]').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                if (this.href.includes('catalogue.html')) {
+                    preloadImage('img/products/dove-soap.png');
+                    preloadImage('img/products/colgate-toothpaste.png');
+                }
+            }, { once: true });
+        });
+
+        // Remove will-change after animation completes for better performance
+        document.addEventListener('animationend', function(e) {
+            if (e.target.classList.contains('fade-in-up') || 
+                e.target.classList.contains('fade-in-left') || 
+                e.target.classList.contains('fade-in-right')) {
+                e.target.style.willChange = 'auto';
+            }
+        });
     </script>
 </body>
 </html>
