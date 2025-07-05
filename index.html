@@ -147,6 +147,46 @@
             50% { opacity: 0.8; }
         }
         
+        /* Animation delays */
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-600 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-900 {
+            animation-delay: 0.9s;
+        }
+        
+        .delay-1200 {
+            animation-delay: 1.2s;
+        }
+        
+        /* Background gradients */
+        .bg-brand-gradient {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+        
+        .bg-trusted-gradient {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+        
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('assets/images/heroes/shipping-port-sunset.jpg');
+        }
+        
+        .pattern-bg {
+            background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23667eea" fill-opacity="0.4"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+        }
+        
         /* Mobile-specific styles */
         @media (max-width: 768px) {
             .mobile-text-lg {
@@ -166,7 +206,7 @@
 </head>
 <body class="bg-white">
     <!-- Clean Glass Navigation -->
-    <nav class="fixed w-full top-0 z-50 transition-all duration-300" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+    <nav class="fixed w-full top-0 z-50 transition-all duration-300 nav-glass">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
@@ -225,12 +265,12 @@
     <!-- Hero Section with Shipping Background -->
     <section class="pt-20 min-h-screen flex items-center justify-center relative overflow-hidden">
         <!-- Background Image with Darker Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('assets/images/heroes/shipping-port-sunset.jpg');">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg">
         </div>
         
         <!-- Subtle Background Pattern -->
         <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23667eea" fill-opacity="0.4"><circle cx="30" cy="30" r="2"/></g></g></svg>');"></div>
+            <div class="absolute inset-0 pattern-bg"></div>
         </div>
         
         <!-- Content -->
@@ -245,18 +285,18 @@
             <div class="space-y-4 md:space-y-6 mb-8 md:mb-12">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
                     <span class="block fade-in-left">Global Trade Solutions</span>
-                    <span class="block bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent fade-in-right" style="animation-delay: 0.3s;">
+                    <span class="block bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent fade-in-right delay-300">
                         Delivered Worldwide
                     </span>
                 </h1>
                 
-                <p class="text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-3xl mx-auto font-light fade-in-up px-4" style="animation-delay: 0.6s;">
+                <p class="text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-3xl mx-auto font-light fade-in-up px-4 delay-600">
                     Connecting global markets with trusted distribution, export and import services across FMCG and commodity sectors for over three decades
                 </p>
             </div>
             
             <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 md:mb-16 fade-in-up px-4" style="animation-delay: 0.9s;">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 md:mb-16 fade-in-up px-4 delay-900">
                 <a href="#contact" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold text-base hover-lift shadow-lg text-center transition-all duration-300">
                     Start Trading Today
                 </a>
@@ -266,7 +306,7 @@
             </div>
             
             <!-- Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto fade-in-up px-4" style="animation-delay: 1.2s;">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto fade-in-up px-4 delay-1200">
                 <div class="text-center">
                     <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">45+</div>
                     <div class="text-xs sm:text-sm text-gray-200 font-medium">Years Experience</div>
@@ -384,7 +424,7 @@
     </section>
 
     <!-- Brand Partners Section -->
-    <section class="py-16" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);">
+    <section class="py-16 bg-brand-gradient">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
             <div class="text-center mb-12">
@@ -515,7 +555,7 @@
     </section>
 
     <!-- Victor International Trading - Trusted Brand Section -->
-    <section class="py-20" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);">
+    <section class="py-20 bg-trusted-gradient">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Left: Content -->
@@ -535,41 +575,6 @@
                         <p class="text-xl text-gray-600 leading-relaxed max-w-xl">
                             We are dealing with more than 1000 products since 45+ successful years into various global markets. We are trusted solution provider by many industries.
                         </p>
-                    </div>
-
-                    <!-- Industries Section */
-                    <div class="space-y-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Industries We Serve</h3>
-                        
-                        <div class="grid grid-cols-1 gap-4">
-                            <div class="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200">
-                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-blue-600 font-bold">1</span>
-                                </div>
-                                <span class="text-gray-800 font-medium">Branded FMCG</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200">
-                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-green-600 font-bold">2</span>
-                                </div>
-                                <span class="text-gray-800 font-medium">Commodities</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200">
-                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-orange-600 font-bold">3</span>
-                                </div>
-                                <span class="text-gray-800 font-medium">Tyre</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200">
-                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-purple-600 font-bold">4</span>
-                                </div>
-                                <span class="text-gray-800 font-medium">Cars</span>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Statistics Section -->
