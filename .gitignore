@@ -1,0 +1,69 @@
+# Development files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js (if ever added)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs (if ever added)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Test files (prevent accidental addition)
+test*.html
+*test.html
+*-test.*
+
+# Large media files that shouldn't be tracked
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.webm
+*.mkv
+
+# Compressed files
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Development documentation (keep production docs)
+TODO.md
+NOTES.md
+DRAFT*.md
