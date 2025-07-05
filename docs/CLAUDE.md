@@ -45,6 +45,32 @@ This is a static website for Victory International Trading LLC, a Dubai-based in
 7. **Contact Form** - Modern form with container ship imagery
 8. **Footer** - Complete contact information and social links
 
+## Code Quality Standards
+
+### CSS Best Practices
+- **Avoid inline styles** - Use CSS classes instead of inline styles to prevent CSS parser conflicts
+- **Use semantic class names** - Classes like `.delay-300`, `.bg-brand-gradient`, `.nav-glass` are preferred
+- **Consistent naming** - Follow established patterns for delays, backgrounds, and effects
+- **Proper syntax** - Ensure all CSS rules have proper closing braces and semicolons
+
+### HTML Standards
+- **Valid syntax** - All HTML elements must be properly closed with correct attribute syntax
+- **SVG elements** - Ensure all path elements have proper closing tags and quoted attributes
+- **Comment syntax** - Use `<!-- comment -->` for HTML comments, not mixed CSS/HTML syntax
+
+### Animation Classes Available
+- `.delay-300` - 0.3s animation delay
+- `.delay-600` - 0.6s animation delay  
+- `.delay-900` - 0.9s animation delay
+- `.delay-1200` - 1.2s animation delay
+
+### Background Classes Available
+- `.bg-brand-gradient` - Blue gradient for brand sections
+- `.bg-trusted-gradient` - Blue gradient for trusted brand sections
+- `.nav-glass` - Glass effect for navigation
+- `.hero-bg` - Hero section background with overlay
+- `.pattern-bg` - Subtle dot pattern background
+
 ## Development Commands
 
 This is a static website project with no build system or package manager. Development can be done by:
