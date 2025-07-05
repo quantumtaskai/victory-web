@@ -1,0 +1,32 @@
+# Files to exclude from hosting deployment
+# Keep locally but don't deploy to hosting environment
+
+# Documentation files
+*.md
+*.MD
+
+# Development files
+test*.html
+*test.html
+*-test.*
+
+# Development folders
+tasks/
+
+# Large unused media
+*.webm
+*.mp4
+*.avi
+*.mov
+
+# Unused image folders
+img/fmcg/
+
+# System files
+.DS_Store
+.git/
+.gitignore
+.deployignore
+
+# Environment files
+.env*

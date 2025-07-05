@@ -49,7 +49,7 @@ test*.html
 *test.html
 *-test.*
 
-# Large media files that shouldn't be tracked
+# Large media files
 *.mp4
 *.avi
 *.mov
